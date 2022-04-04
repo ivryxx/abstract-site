@@ -65,6 +65,7 @@ class Site {
         for (let i = 0; i < this.boards.length; i++) {
             if (this.boards[i].boardName == boardName) {
                 Object.assign(result, this.boards[i]);
+                //
             }
         }
         return result;
