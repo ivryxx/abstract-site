@@ -15,14 +15,16 @@ class Site {
     }
 
     findBoardByName(boardName) {
-        const result = new Board();
+        const findBoard = this.boards.find((item) => item.boardName === boardName);
+        // const result = new Board();
 
-        for (let i = 0; i < this.boards.length; i++) {
-            if (this.boards[i].boardName === boardName) {
-                Object.assign(result, this.boards[i]);
-            }
-        }
-        return result;
+        // for (let i = 0; i < this.boards.length; i++) {
+        //     if (this.boards[i].boardName === boardName) {
+        //         Object.assign(result, this.boards[i]);
+        //     }
+        // }
+        // console.log(this.boards);
+        return findBoard;
     }
 }
 
@@ -56,14 +58,7 @@ class Board extends Site {
 
 class Article {
     constructor(article) {
-        if (
-            article.subject === '' ||
-            article.subject === null ||
-            article.content === '' ||
-            article.content === null ||
-            article.author === '' ||
-            article.author === null
-        ) {
+        if (!article.subject || !article.content || !article.author) {
             throw new Error();
         }
         this.article = article;
